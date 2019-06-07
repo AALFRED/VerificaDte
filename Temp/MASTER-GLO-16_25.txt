@@ -1,0 +1,7 @@
+Usuario: MASTER
+Documento Inicial: 1026
+Documento Final: 1027
+Nro de Documentos Revisados: 2
+Tipo de Documento: Notas de Débito 
+Hora de Inicio Revision: 16:22
+Hora Final de Revision: 16:25

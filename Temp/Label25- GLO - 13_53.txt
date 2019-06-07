@@ -1,0 +1,7 @@
+Usuario: Label25
+Documento Inicial: 68978
+Documento Final: 68992
+Nro de Documentos Revisados: 15
+Tipo de Documento: Factura Electrónica 
+Hora de Inicio Revision: 13:52
+Hora Final de Revision: 13:53

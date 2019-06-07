@@ -1,0 +1,7 @@
+Usuario: MASTER
+Documento Inicial: 1079
+Documento Final: 1095
+Nro de Documentos Revisados: 17
+Tipo de Documento: Notas de Débito 
+Hora de Inicio Revision: 16:16
+Hora Final de Revision: 16:16

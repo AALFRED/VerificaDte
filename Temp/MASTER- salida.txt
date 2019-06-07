@@ -1,0 +1,7 @@
+Usuario: MASTER
+Documento Inicial: 118930
+Documento Final: 118940
+Nro de Documentos Revisados: 11
+Tipo de Documento:  NOTAS DE DÉBITO
+Hora de Inicio Revision: 13:56
+Hora Final de Revision: 13:57

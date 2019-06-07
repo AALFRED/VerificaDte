@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD16E13E-7F5D-45FF-8FEB-531C275ED9D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
+    <RootNamespace>WindowsApplication1</RootNamespace>
+    <AssemblyName>verificadte</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <OptionStrict>Off</OptionStrict>
+    <ManifestCertificateThumbprint>77FAD064BA852BB22C84F03D7E6EA29E5DA80F1C</ManifestCertificateThumbprint>
+    <ManifestKeyFile>verificadte_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignAssembly>false</SignAssembly>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>http://localhost/verificadte/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>verificadte.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>verificadte.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel1">
+      <HintPath>..\..\Program Files (x86)\Microsoft Visual Studio 9.0\Visual Studio Tools for Office\PIA\Office12\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="msmdvbanet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=5.0.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GESTION_CM\recursos\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.Office.Interop.Excel" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="frm_Acuse_Rango_Cint.Designer.vb">
+      <DependentUpon>frm_Acuse_Rango_Cint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Acuse_Rango_Cint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Acuse_Rango_Glo.Designer.vb">
+      <DependentUpon>frm_Acuse_Rango_Glo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Acuse_Rango_Glo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_anos_dte_mes.Designer.vb">
+      <DependentUpon>frm_anos_dte_mes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_anos_dte_mes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_anos_dte_mes_glo.Designer.vb">
+      <DependentUpon>frm_anos_dte_mes_glo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_anos_dte_mes_glo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_consulta_eventos.Designer.vb">
+      <DependentUpon>frm_consulta_eventos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_consulta_eventos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_mes_gk.designer.vb">
+      <DependentUpon>frm_folio_mes_gk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_mes_gk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Inicio.Designer.vb">
+      <DependentUpon>Frm_Inicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Inicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_mes_cint_compras.Designer.vb">
+      <DependentUpon>frm_mes_cint_compras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_mes_cint_compras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_compras_cint.Designer.vb">
+      <DependentUpon>frm_folio_compras_cint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_compras_cint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_dte_gk.Designer.vb">
+      <DependentUpon>frm_folio_dte_gk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_dte_gk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_dte_glo.Designer.vb">
+      <DependentUpon>frm_folio_dte_glo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_dte_glo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_mes_glo.Designer.vb">
+      <DependentUpon>frm_folio_mes_glo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_mes_glo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_rango_dte_gk.designer.vb">
+      <DependentUpon>frm_rango_dte_gk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_rango_dte_gk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_rango_dte_glo.Designer.vb">
+      <DependentUpon>frm_rango_dte_glo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_rango_dte_glo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_dte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_dte.Designer.vb">
+      <DependentUpon>frm_folio_dte.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_folio_mes.Designer.vb">
+      <DependentUpon>frm_folio_mes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_folio_mes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_rango_dte.Designer.vb">
+      <DependentUpon>frm_rango_dte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_rango_dte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_menu.Designer.vb">
+      <DependentUpon>frm_menu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_menu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_recupera_fel_compra.Designer.vb">
+      <DependentUpon>frm_recupera_fel_compra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_recupera_fel_compra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Web References\consulta_avanzada\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\eventos_acepta\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\referenciaws2\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\estadoDTE\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\referenciatoken\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\referenciaws\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WS_QueryFiscExt\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frm_Acuse_Rango_Cint.resx">
+      <DependentUpon>frm_Acuse_Rango_Cint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Acuse_Rango_Glo.resx">
+      <DependentUpon>frm_Acuse_Rango_Glo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_anos_dte_mes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_anos_dte_mes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_anos_dte_mes_glo.resx">
+      <DependentUpon>frm_anos_dte_mes_glo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_consulta_eventos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_consulta_eventos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_mes_gk.resx">
+      <DependentUpon>frm_folio_mes_gk.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Inicio.resx">
+      <DependentUpon>Frm_Inicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_mes_cint_compras.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_mes_cint_compras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_compras_cint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_compras_cint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_dte_gk.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_dte_gk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_dte_glo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_dte_glo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_mes_glo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_mes_glo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_dte.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_dte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_folio_mes.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_folio_mes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_rango_dte.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_rango_dte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_menu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_rango_dte_gk.resx">
+      <DependentUpon>frm_rango_dte_gk.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_rango_dte_glo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_rango_dte_glo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_recupera_fel_compra.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frm_recupera_fel_compra.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Web References\consulta_avanzada\QueryEstDteAv.wsdl" />
+    <None Include="Web References\consulta_avanzada\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\eventos_acepta\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\eventos_acepta\registroreclamodteservice.wsdl" />
+    <None Include="Web References\eventos_acepta\registroreclamodteservice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\eventos_acepta\respuestaTo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\referenciaws2\QueryEstUp.wsdl" />
+    <None Include="Web References\referenciaws2\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\estadoDTE\QueryEstDte.wsdl" />
+    <None Include="Web References\estadoDTE\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\referenciatoken\GetTokenFromSeed.wsdl" />
+    <None Include="Web References\referenciatoken\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\referenciaws\CrSeed.wsdl" />
+    <None Include="Web References\referenciaws\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\WS_QueryFiscExt\QueryFiscExt.wsdl" />
+    <None Include="Web References\WS_QueryFiscExt\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/CrSeed.jws%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\referenciaws\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/CrSeed.jws%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WindowsApplication1_referenciaws_CrSeedService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/GetTokenFromSeed.jws%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\referenciatoken\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/GetTokenFromSeed.jws%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_referenciatoken_GetTokenFromSeedService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/QueryEstDte.jws%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\estadoDTE\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/QueryEstDte.jws%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_estadoDTE_QueryEstDteService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/QueryEstUp.jws%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\referenciaws2\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/QueryEstUp.jws%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_cl_sii_palena_QueryEstUpService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/services/QueryEstDteAv%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\consulta_avanzada\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/services/QueryEstDteAv%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_consulta_avanzada_QueryEstDteAvService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://palena.sii.cl/DTEWS/services/QueryFiscExt%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_QueryFiscExt\</RelPath>
+      <UpdateFromURL>https://palena.sii.cl/DTEWS/services/QueryFiscExt%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_WS_QueryFiscExt_QueryFiscExtService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://ws1.sii.cl/WSREGISTRORECLAMODTE/registroreclamodteservice%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\eventos_acepta\</RelPath>
+      <UpdateFromURL>https://ws1.sii.cl/WSREGISTRORECLAMODTE/registroreclamodteservice%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>verificadte_eventos_acepta_RegistroReclamoDteServiceEndpointService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <None Include="Resources\man128.png" />
+    <None Include="Resources\access1.ico" />
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

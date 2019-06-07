@@ -1,0 +1,7 @@
+Usuario: MASTER
+Documento Inicial: 118391
+Documento Final: 118398
+Nro de Documentos Revisados: 8
+Tipo de Documento: Factura Electrónica 
+Hora de Inicio Revision: 16:15
+Hora Final de Revision: 16:15
