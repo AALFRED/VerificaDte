@@ -24,22 +24,22 @@ Imports System.Xml.Serialization
 Namespace referenciatoken
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
      System.Web.Services.WebServiceBindingAttribute(Name:="GetTokenFromSeedSoapBinding", [Namespace]:="http://DefaultNamespace")>  _
     Partial Public Class GetTokenFromSeedService
         Inherits System.Web.Services.Protocols.SoapHttpClientProtocol
         
-        Private getStateOperationCompleted As System.Threading.SendOrPostCallback
-        
-        Private getVersionMayorOperationCompleted As System.Threading.SendOrPostCallback
-        
         Private getVersionMenorOperationCompleted As System.Threading.SendOrPostCallback
         
         Private getVersionPatchOperationCompleted As System.Threading.SendOrPostCallback
         
+        Private getVersionMayorOperationCompleted As System.Threading.SendOrPostCallback
+        
         Private getTokenOperationCompleted As System.Threading.SendOrPostCallback
+        
+        Private getStateOperationCompleted As System.Threading.SendOrPostCallback
         
         Private useDefaultCredentialsSetExplicitly As Boolean
         
@@ -80,73 +80,19 @@ Namespace referenciatoken
         End Property
         
         '''<remarks/>
-        Public Event getStateCompleted As getStateCompletedEventHandler
-        
-        '''<remarks/>
-        Public Event getVersionMayorCompleted As getVersionMayorCompletedEventHandler
-        
-        '''<remarks/>
         Public Event getVersionMenorCompleted As getVersionMenorCompletedEventHandler
         
         '''<remarks/>
         Public Event getVersionPatchCompleted As getVersionPatchCompletedEventHandler
         
         '''<remarks/>
+        Public Event getVersionMayorCompleted As getVersionMayorCompletedEventHandler
+        
+        '''<remarks/>
         Public Event getTokenCompleted As getTokenCompletedEventHandler
         
         '''<remarks/>
-        <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
-        Public Function getState() As <System.Xml.Serialization.SoapElementAttribute("getStateReturn")> String
-            Dim results() As Object = Me.Invoke("getState", New Object(-1) {})
-            Return CType(results(0),String)
-        End Function
-        
-        '''<remarks/>
-        Public Overloads Sub getStateAsync()
-            Me.getStateAsync(Nothing)
-        End Sub
-        
-        '''<remarks/>
-        Public Overloads Sub getStateAsync(ByVal userState As Object)
-            If (Me.getStateOperationCompleted Is Nothing) Then
-                Me.getStateOperationCompleted = AddressOf Me.OngetStateOperationCompleted
-            End If
-            Me.InvokeAsync("getState", New Object(-1) {}, Me.getStateOperationCompleted, userState)
-        End Sub
-        
-        Private Sub OngetStateOperationCompleted(ByVal arg As Object)
-            If (Not (Me.getStateCompletedEvent) Is Nothing) Then
-                Dim invokeArgs As System.Web.Services.Protocols.InvokeCompletedEventArgs = CType(arg,System.Web.Services.Protocols.InvokeCompletedEventArgs)
-                RaiseEvent getStateCompleted(Me, New getStateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState))
-            End If
-        End Sub
-        
-        '''<remarks/>
-        <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
-        Public Function getVersionMayor() As <System.Xml.Serialization.SoapElementAttribute("getVersionMayorReturn")> String
-            Dim results() As Object = Me.Invoke("getVersionMayor", New Object(-1) {})
-            Return CType(results(0),String)
-        End Function
-        
-        '''<remarks/>
-        Public Overloads Sub getVersionMayorAsync()
-            Me.getVersionMayorAsync(Nothing)
-        End Sub
-        
-        '''<remarks/>
-        Public Overloads Sub getVersionMayorAsync(ByVal userState As Object)
-            If (Me.getVersionMayorOperationCompleted Is Nothing) Then
-                Me.getVersionMayorOperationCompleted = AddressOf Me.OngetVersionMayorOperationCompleted
-            End If
-            Me.InvokeAsync("getVersionMayor", New Object(-1) {}, Me.getVersionMayorOperationCompleted, userState)
-        End Sub
-        
-        Private Sub OngetVersionMayorOperationCompleted(ByVal arg As Object)
-            If (Not (Me.getVersionMayorCompletedEvent) Is Nothing) Then
-                Dim invokeArgs As System.Web.Services.Protocols.InvokeCompletedEventArgs = CType(arg,System.Web.Services.Protocols.InvokeCompletedEventArgs)
-                RaiseEvent getVersionMayorCompleted(Me, New getVersionMayorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState))
-            End If
-        End Sub
+        Public Event getStateCompleted As getStateCompletedEventHandler
         
         '''<remarks/>
         <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
@@ -204,6 +150,33 @@ Namespace referenciatoken
         
         '''<remarks/>
         <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
+        Public Function getVersionMayor() As <System.Xml.Serialization.SoapElementAttribute("getVersionMayorReturn")> String
+            Dim results() As Object = Me.Invoke("getVersionMayor", New Object(-1) {})
+            Return CType(results(0),String)
+        End Function
+        
+        '''<remarks/>
+        Public Overloads Sub getVersionMayorAsync()
+            Me.getVersionMayorAsync(Nothing)
+        End Sub
+        
+        '''<remarks/>
+        Public Overloads Sub getVersionMayorAsync(ByVal userState As Object)
+            If (Me.getVersionMayorOperationCompleted Is Nothing) Then
+                Me.getVersionMayorOperationCompleted = AddressOf Me.OngetVersionMayorOperationCompleted
+            End If
+            Me.InvokeAsync("getVersionMayor", New Object(-1) {}, Me.getVersionMayorOperationCompleted, userState)
+        End Sub
+        
+        Private Sub OngetVersionMayorOperationCompleted(ByVal arg As Object)
+            If (Not (Me.getVersionMayorCompletedEvent) Is Nothing) Then
+                Dim invokeArgs As System.Web.Services.Protocols.InvokeCompletedEventArgs = CType(arg,System.Web.Services.Protocols.InvokeCompletedEventArgs)
+                RaiseEvent getVersionMayorCompleted(Me, New getVersionMayorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState))
+            End If
+        End Sub
+        
+        '''<remarks/>
+        <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
         Public Function getToken(ByVal pszXml As String) As <System.Xml.Serialization.SoapElementAttribute("getTokenReturn")> String
             Dim results() As Object = Me.Invoke("getToken", New Object() {pszXml})
             Return CType(results(0),String)
@@ -230,6 +203,33 @@ Namespace referenciatoken
         End Sub
         
         '''<remarks/>
+        <System.Web.Services.Protocols.SoapRpcMethodAttribute("", RequestNamespace:="http://DefaultNamespace", ResponseNamespace:="http://DefaultNamespace")>  _
+        Public Function getState() As <System.Xml.Serialization.SoapElementAttribute("getStateReturn")> String
+            Dim results() As Object = Me.Invoke("getState", New Object(-1) {})
+            Return CType(results(0),String)
+        End Function
+        
+        '''<remarks/>
+        Public Overloads Sub getStateAsync()
+            Me.getStateAsync(Nothing)
+        End Sub
+        
+        '''<remarks/>
+        Public Overloads Sub getStateAsync(ByVal userState As Object)
+            If (Me.getStateOperationCompleted Is Nothing) Then
+                Me.getStateOperationCompleted = AddressOf Me.OngetStateOperationCompleted
+            End If
+            Me.InvokeAsync("getState", New Object(-1) {}, Me.getStateOperationCompleted, userState)
+        End Sub
+        
+        Private Sub OngetStateOperationCompleted(ByVal arg As Object)
+            If (Not (Me.getStateCompletedEvent) Is Nothing) Then
+                Dim invokeArgs As System.Web.Services.Protocols.InvokeCompletedEventArgs = CType(arg,System.Web.Services.Protocols.InvokeCompletedEventArgs)
+                RaiseEvent getStateCompleted(Me, New getStateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState))
+            End If
+        End Sub
+        
+        '''<remarks/>
         Public Shadows Sub CancelAsync(ByVal userState As Object)
             MyBase.CancelAsync(userState)
         End Sub
@@ -249,65 +249,11 @@ Namespace referenciatoken
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")>  _
-    Public Delegate Sub getStateCompletedEventHandler(ByVal sender As Object, ByVal e As getStateCompletedEventArgs)
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code")>  _
-    Partial Public Class getStateCompletedEventArgs
-        Inherits System.ComponentModel.AsyncCompletedEventArgs
-        
-        Private results() As Object
-        
-        Friend Sub New(ByVal results() As Object, ByVal exception As System.Exception, ByVal cancelled As Boolean, ByVal userState As Object)
-            MyBase.New(exception, cancelled, userState)
-            Me.results = results
-        End Sub
-        
-        '''<remarks/>
-        Public ReadOnly Property Result() As String
-            Get
-                Me.RaiseExceptionIfNecessary
-                Return CType(Me.results(0),String)
-            End Get
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")>  _
-    Public Delegate Sub getVersionMayorCompletedEventHandler(ByVal sender As Object, ByVal e As getVersionMayorCompletedEventArgs)
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code")>  _
-    Partial Public Class getVersionMayorCompletedEventArgs
-        Inherits System.ComponentModel.AsyncCompletedEventArgs
-        
-        Private results() As Object
-        
-        Friend Sub New(ByVal results() As Object, ByVal exception As System.Exception, ByVal cancelled As Boolean, ByVal userState As Object)
-            MyBase.New(exception, cancelled, userState)
-            Me.results = results
-        End Sub
-        
-        '''<remarks/>
-        Public ReadOnly Property Result() As String
-            Get
-                Me.RaiseExceptionIfNecessary
-                Return CType(Me.results(0),String)
-            End Get
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")>  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0")>  _
     Public Delegate Sub getVersionMenorCompletedEventHandler(ByVal sender As Object, ByVal e As getVersionMenorCompletedEventArgs)
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code")>  _
     Partial Public Class getVersionMenorCompletedEventArgs
@@ -330,11 +276,11 @@ Namespace referenciatoken
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")>  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0")>  _
     Public Delegate Sub getVersionPatchCompletedEventHandler(ByVal sender As Object, ByVal e As getVersionPatchCompletedEventArgs)
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code")>  _
     Partial Public Class getVersionPatchCompletedEventArgs
@@ -357,14 +303,68 @@ Namespace referenciatoken
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")>  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0")>  _
+    Public Delegate Sub getVersionMayorCompletedEventHandler(ByVal sender As Object, ByVal e As getVersionMayorCompletedEventArgs)
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code")>  _
+    Partial Public Class getVersionMayorCompletedEventArgs
+        Inherits System.ComponentModel.AsyncCompletedEventArgs
+        
+        Private results() As Object
+        
+        Friend Sub New(ByVal results() As Object, ByVal exception As System.Exception, ByVal cancelled As Boolean, ByVal userState As Object)
+            MyBase.New(exception, cancelled, userState)
+            Me.results = results
+        End Sub
+        
+        '''<remarks/>
+        Public ReadOnly Property Result() As String
+            Get
+                Me.RaiseExceptionIfNecessary
+                Return CType(Me.results(0),String)
+            End Get
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0")>  _
     Public Delegate Sub getTokenCompletedEventHandler(ByVal sender As Object, ByVal e As getTokenCompletedEventArgs)
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code")>  _
     Partial Public Class getTokenCompletedEventArgs
+        Inherits System.ComponentModel.AsyncCompletedEventArgs
+        
+        Private results() As Object
+        
+        Friend Sub New(ByVal results() As Object, ByVal exception As System.Exception, ByVal cancelled As Boolean, ByVal userState As Object)
+            MyBase.New(exception, cancelled, userState)
+            Me.results = results
+        End Sub
+        
+        '''<remarks/>
+        Public ReadOnly Property Result() As String
+            Get
+                Me.RaiseExceptionIfNecessary
+                Return CType(Me.results(0),String)
+            End Get
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0")>  _
+    Public Delegate Sub getStateCompletedEventHandler(ByVal sender As Object, ByVal e As getStateCompletedEventArgs)
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3062.0"),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code")>  _
+    Partial Public Class getStateCompletedEventArgs
         Inherits System.ComponentModel.AsyncCompletedEventArgs
         
         Private results() As Object

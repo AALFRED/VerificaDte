@@ -1,29 +1,16 @@
 'Imports consumiendo.referenciaws
-Imports System
-Imports System.Data
 Imports System.Net
 Imports System.IO
 Imports System.Xml
 Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Security.Cryptography.X509Certificates
-Imports System.Diagnostics
-Imports System.Threading
-Imports System.Object
 Imports System.Security.Cryptography.Xml
-Imports System.Security.Cryptography.Xml.SignedXml
-Imports System.Windows.Forms
-Imports Microsoft.VisualBasic
 Imports System.Data.SqlClient
-Imports System.Drawing
-Imports Microsoft.Office.Interop
-Imports System.Runtime.InteropServices
 Imports MySql.Data.MySqlClient
-Imports System.Web.Security
-Imports System.Web.Services
-Imports System.Web.Services.Protocols
-Imports System.ServiceModel.Channels
-Imports System.ServiceModel
+Imports Microsoft.Office.Interop
+Imports System.Drawing
+
 
 
 Public Class frm_anos_dte_mes

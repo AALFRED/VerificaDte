@@ -17,7 +17,6 @@ Imports System.Web.Services.Protocols
 Imports System.ServiceModel.Channels
 Imports System.ServiceModel
 
-
 Public Class frm_Acuse_Rango_Glo
 
     Private midte As Long
@@ -63,7 +62,7 @@ Public Class frm_Acuse_Rango_Glo
         '/////
         'LEE archivo texto
         Dim fileReader As System.IO.StreamReader
-        fileReader = My.Computer.FileSystem.OpenTextFileReader("C:\Proyectos Vb2017\verificadte\cert02.txt")
+        fileReader = My.Computer.FileSystem.OpenTextFileReader("C:\Proyectos Vb2017\verificadte\cert02.txt") 'certificado global
         Dim stringReader As String
         stringReader = fileReader.ReadLine()
         ' & stringReader)
@@ -117,8 +116,24 @@ Public Class frm_Acuse_Rango_Glo
 
             If doc.WriteState = WriteState.Closed Then
 
-                Dim rutaorigen As String = "C:\Proyectos Vb2017\verificadte\bin\Debug\Token.xml"
-                Dim RutaDestinoRecibo As String = "C:\Proyectos Vb2017\verificadte\bin\Debug\Token1.xml"
+                ' Dim rutaorigen As String = "C:\Proyectos Vb2017\verificadte\bin\Debug\Token.xml"
+                'nueva
+                Dim rutaorigen As String = "C:\Proyectos Vb2017\verificadte\Tokenglo\Token.xml"
+
+
+                ' Dim RutaDestinoRecibo As String = "C:\Proyectos Vb2017\verificadte\bin\Debug\Token1.xml"
+
+                Dim ArchivoBorrar As String
+
+                ArchivoBorrar = "C:\Proyectos Vb2017\verificadte\Tokenglo\Token1.xml"
+
+                'comprobamos que el archivo existe
+                If System.IO.File.Exists(ArchivoBorrar) = True Then
+                    System.IO.File.Delete(ArchivoBorrar)
+                End If
+
+                'nueva
+                Dim RutaDestinoRecibo As String = "C:\Proyectos Vb2017\verificadte\Tokenglo\Token1.xml"
                 Dim archivonombre = Path.GetFileName(rutaorigen)
                 Dim destino As String = Path.Combine(RutaDestinoRecibo, archivonombre)
 
@@ -226,7 +241,7 @@ Public Class frm_Acuse_Rango_Glo
         Dim horafinal As String = Now.ToString("HH:mm")
         Dim DatoHora As String = Now.ToString("HH_mm")
 
-        Dim strDestinationFile As String = "C:\Proyectos Vb2017\verificadte\log\\" & Label4.Text & "-CINT-AR-" & DatoHora & ".txt"
+        Dim strDestinationFile As String = "C:\Proyectos Vb2017\verificadte\log\\" & Label4.Text & "-GLO-AR-" & DatoHora & ".txt"
         Dim tw As TextWriter = New StreamWriter(strDestinationFile)
 
         Try
@@ -290,7 +305,8 @@ Public Class frm_Acuse_Rango_Glo
             SoapByte = System.Text.Encoding.UTF8.GetBytes(SoapStr)
 
             Request = WebRequest.Create("https://ws1.sii.cl/WSREGISTRORECLAMODTE/registroreclamodteservice")
-            Request.Headers.Add("SOAPAction", "listarEventosHistDoc")
+            'Request.Headers.Add("SOAPAction", "listarEventosHistDoc")
+            Request.Headers.Add("SOAPAction", "")
             Request.Headers.Add("cookie", "TOKEN=" & TextBox2.Text)
             Request.Method = "POST"
             Request.ContentType = "text/xml; charset=UTF-8"
@@ -335,6 +351,8 @@ Public Class frm_Acuse_Rango_Glo
                     ' MsgBox(valret)
                 Case "18"
                     valret = "NO RECIBIDO"
+                Case "PAG"
+                    valret = "PAG AL CONTADO"
             End Select
 
 
@@ -368,7 +386,8 @@ Public Class frm_Acuse_Rango_Glo
             SoapByte = System.Text.Encoding.UTF8.GetBytes(SoapStr)
 
             Request = WebRequest.Create("https://ws1.sii.cl/WSREGISTRORECLAMODTE/registroreclamodteservice")
-            Request.Headers.Add("SOAPAction", "listarEventosHistDoc")
+            'Request.Headers.Add("SOAPAction", "listarEventosHistDoc")
+            Request.Headers.Add("SOAPAction", "")
             Request.Headers.Add("cookie", "TOKEN=" & TextBox2.Text)
             Request.Method = "POST"
             Request.ContentType = "text/xml; charset=UFT-8"
@@ -413,6 +432,8 @@ Public Class frm_Acuse_Rango_Glo
                    ' MsgBox(valret)  'estaba comentado
                 Case "18"
                     valret = "NO RECIBIDO"
+                Case "PAG"
+                    valret = "PAG AL CONTADO"
             End Select
 
         Catch ex As WebException
@@ -485,7 +506,6 @@ Public Class frm_Acuse_Rango_Glo
                         frm_menu.Hide()
                         System.Windows.Forms.Application.DoEvents()
                         Cursor.Current = Cursors.WaitCursor
-                        'Cursor = Cursors.WaitCursor
 
                         '///////////////////////////////////////////
                         'INCREMENTA EL LISTADO
@@ -494,55 +514,59 @@ Public Class frm_Acuse_Rango_Glo
                         With grilla
                             If j = 0 Then
                                 .Item(0, j).Value = midte
-                                If b = "DTE No Recibido" Then
-                                    .Item(1, j).Value = b
-                                    agrega = 1
-                                Else
-                                    .Item(1, j).Value = b
-                                End If
+                                'If b = "DTE No Recibido" Then
+                                '    .Item(1, j).Value = b
+                                '    agrega = 1
+                                'Else
+                                '    .Item(1, j).Value = b
+                                'End If
 
-                                ' .Item(2, j).Value = "REGISTRADO"
-                                If agrega = 1 Then
-                                    'agrega a la grilla2
-                                    Call notengodatos()   'antes notengodatos2
-                                End If
+                                '' .Item(2, j).Value = "REGISTRADO"
+                                'If agrega = 1 Then
+                                '    'agrega a la grilla2
+                                '    Call notengodatos()   'antes notengodatos2
+                                'End If
 
                                 Call valida_aceptacion()
                                 Select Case valret
                                     Case "RCD"
                                         .Item(1, j).Value = "Reclamo al contenido del documento"
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "RFP"
                                         .Item(1, j).Value = "Reclamo por falta parcial de mercaderías"
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "RFT"
                                         .Item(1, j).Value = "Reclamo por falta total de mercaderías"
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "SIN ACUSE"
                                         .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo"
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case ("ACD")
                                         .Item(1, j).Value = "Acepta contenido del documento"
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "ERM"
                                         .Item(1, j).Value = "Otorga recibo de mercaderías o servicios"
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "NCA"
                                         .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento"
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "ENC"
                                         .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento"
                                         bandera2 = True
+                                    Case "PAG"
+                                        .Item(1, j).Value = "DTE Pagado al Contado."
+                                        bandera2 = False
+
                                     Case Else
                                         .Item(1, j).Value = "Error de Servicio"
-                                        bandera2 = True
+                                        bandera2 = False
                                         'Label24.Text = Label24.Text + 1
                                 End Select
 
-                                If bandera2 = False Then
+                                If bandera2 = True Then
                                     Call notengodatos()   'antes notengodatos2
                                 End If
 
@@ -558,47 +582,51 @@ Public Class frm_Acuse_Rango_Glo
 
                                 ' .Item(2, j).Value = "REGISTRADO" 'si procesa es porque esta en sist vtas
 
-                                If agrega = 1 Then
-                                    'agrega a la grilla2
-                                    Call notengodatos() 'antes notengodatos2
-                                End If
+                                'If agrega = 1 Then
+                                '    'agrega a la grilla2
+                                '    Call notengodatos() 'antes notengodatos2
+                                'End If
 
                                 Call valida_aceptacion()
                                 Select Case valret
                                     Case "RCD"
                                         .Item(1, j).Value = "Reclamo al contenido del documento."
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "RFP"
                                         .Item(1, j).Value = "Reclamo por falta parcial de mercaderías."
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "RFT"
                                         .Item(1, j).Value = "Reclamo por falta total de mercaderías."
-                                        bandera2 = False
+                                        bandera2 = True
                                         Label24.Text = Label24.Text + 1
                                     Case "SIN ACUSE"
                                         .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo."
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case ("ACD")
                                         .Item(1, j).Value = "Acepta contenido del documento."
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "ERM"
                                         .Item(1, j).Value = "Otorga recibo de mercaderías o servicios."
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "NCA"
                                         .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento."
-                                        bandera2 = True
+                                        bandera2 = False
                                     Case "ENC"
                                         .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento."
                                         bandera2 = True
+                                    Case "PAG"
+                                        .Item(1, j).Value = "DTE Pagado al Contado."
+                                        bandera2 = False
+
                                     Case Else
                                         .Item(1, j).Value = "Error de Servicio."
-                                        bandera2 = True
+                                        bandera2 = False
 
                                 End Select
 
-                                If bandera2 = False Then
+                                If bandera2 = True Then
                                     Call notengodatos()  'antes notengodatos2
                                 End If
                             End If
@@ -668,18 +696,18 @@ Public Class frm_Acuse_Rango_Glo
             With grilla2
                 If g = 0 Then
                     .Item(0, g).Value = midte
-                    .Item(1, g).Value = "NO RECIBIDO"
+                    .Item(1, g).Value = "EL DOCUMENTO PRESENTA UN RECHAZO O PROBLEMA VERIFIQUE"
 
                     If bandera2 = True Then
-                        .Item(1, g).Value = "ERROR VERIFICAR EN PAGINA DE SII"
+                        .Item(1, g).Value = "ERROR VERIFICAR EN PÁGINA DE SII"
                     End If
                 Else
                     .Rows.Add()
                     .Item(0, g).Value = midte
-                    .Item(1, g).Value = "NO RECIBIDO"
+                    .Item(1, g).Value = "EL DOCUMENTO PRESENTA UN RECHAZO O PROBLEMA VERIFIQUE."
 
                     If bandera2 = True Then
-                        .Item(1, g).Value = "ERROR VERIFICAR EN PAGINA DE SII."
+                        .Item(1, g).Value = "ERROR VERIFICAR EN PÁGINA DE SII."
                     End If
                 End If
 
@@ -791,26 +819,7 @@ Public Class frm_Acuse_Rango_Glo
         creatoken()
     End Sub
 
-    Private Sub cmd_limpiar_Click(sender As Object, e As EventArgs) Handles cmd_limpiar.Click
-        Call limpia()
-        grilla.Rows.Clear()
-        grilla2.Rows.Clear()
 
-        Label20.Visible = False 'REVISANDO...
-        Label21.Visible = False 'FEL
-
-        Label15.Text = ""
-        Label16.Text = ""
-
-        cmd_buscar.Enabled = False
-        Button1.Enabled = False
-
-        Button1.Visible = True
-
-        CheckBox3.Checked = False
-
-
-    End Sub
 
     Private Sub cmd_buscar_Click(sender As Object, e As EventArgs) Handles cmd_buscar.Click
         'BUSCA FEL
@@ -1167,213 +1176,219 @@ Public Class frm_Acuse_Rango_Glo
         Dim com As New MySqlCommand
         Dim rs As MySqlDataReader
 
-        'Try
-        'Dim cadena1 As String
-        com.Connection = conn
-        midte = TextBox15.Text
-        agrega = 0
+        Try
+            'Dim cadena1 As String
+            com.Connection = conn
+            midte = TextBox15.Text
+            agrega = 0
 
-        Label20.Visible = True 'REVISANDO...
-        Label21.Visible = True 'FEL
-        Label24.Text = 0
-        j = 0
-        agrega = 0
+            Label20.Visible = True 'REVISANDO...
+            Label21.Visible = True 'FEL
+            Label24.Text = 0
+            j = 0
+            agrega = 0
 
-        i = midte
+            i = midte
 
-        If conn.State = ConnectionState.Open Then conn.Close()
-        conn.Open()
-        If midte <= "99999" Then
-            valor = "FEL00000" & midte
-        Else
-            valor = "FEL0000" & midte
-        End If
-        sql = "Select rutcon, totalcon, fechacon FROM VENTA WHERE tipocon = '" & valor & "'"
-
-        com = New MySqlCommand(sql, conn)
-        rs = com.ExecuteReader()
-        If rs.HasRows = False Then
-            Call notengodatos2()
-        Else
-
-            If rs.Read() = True Then
-                TextBox12.Text = "33"
-                cadena = LTrim(RTrim(CStr(rs("rutcon"))))
-
-                a = cadena.Substring(1, 9) 'saca el primer caracter
-                s = cadena.Substring(9, 1) 'saca el ultimo caracter
-                a = cadena.Substring(1, 8)
-                TextBox8.Text = a
-                TextBox7.Text = s
-
-                'TextBox1.Text = a
-                TextBox11.Text = CStr(rs("totalcon"))
-                TextBox10.Text = CStr(rs("fechacon"))
-
-                TextBox10.Text = Replace(TextBox10.Text, "-", "")
-                TextBox10.Text = TextBox10.Text
-
-                rs.Close()
-                'MsgBox(midte)
-                frm_menu.Hide()
-                System.Windows.Forms.Application.DoEvents()
-                Cursor.Current = Cursors.WaitCursor
-
-                '///////////////////////////////////////////
-                'INCREMENTA EL LISTADO
-                With grilla
-                    If j = 0 Then
-                        .Item(0, j).Value = midte
-                        If b = "DTE No Recibido" Then
-                            .Item(1, j).Value = b
-                            agrega = 1
-                        Else
-                            .Item(1, j).Value = b
-                        End If
-                        ' .Item(2, j).Value = "REGISTRADO"
-                        If agrega = 1 Then
-                            'agrega a la grilla2
-                            Call notengodatos2()   'antes notengodatos2
-                        End If
-
-                        bandera = False
-
-                        Call valida_aceptacion2()
-
-                        Select Case valret
-                            Case "RCD"
-                                .Item(1, j).Value = "Reclamo al contenido del documento"
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "RFP"
-                                .Item(1, j).Value = "Reclamo por falta parcial de mercaderías"
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "RFT"
-                                .Item(1, j).Value = "Reclamo por falta total de mercaderías"
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "SIN ACUSE"
-                                .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo"
-                                bandera2 = False
-                            Case ("ACD")
-                                .Item(1, j).Value = "Acepta contenido del documento"
-                                bandera2 = False
-                            Case "ERM"
-                                .Item(1, j).Value = "Otorga recibo de mercaderías o servicios"
-                                bandera2 = False
-                            Case "NCA"
-                                .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento"
-                                bandera2 = False
-                            Case "ENC"
-                                .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento"
-                                bandera2 = True
-                            Case Else
-                                .Item(1, j).Value = "Error de Servicio"
-                                bandera2 = True
-                                'Label24.Text = Label24.Text + 1
-                        End Select
-
-                        If bandera2 = True Then
-                            Call notengodatos2()   'antes notengodatos2
-                        End If
-
-                    Else
-                        .Rows.Add()
-                        .Item(0, j).Value = midte
-                        If b = "DTE No Recibido" Then
-                            .Item(1, j).Value = b
-                            agrega = 1
-                        Else
-                            .Item(1, j).Value = b
-                        End If
-
-                        ' .Item(2, j).Value = "REGISTRADO" 'si procesa es porque esta en sist vtas
-
-                        If agrega = 1 Then
-                            'agrega a la grilla2
-                            Call notengodatos2() 'antes notengodatos2
-                        End If
-
-                        Call valida_aceptacion()
-                        Select Case valret
-                            Case "RCD"
-                                .Item(1, j).Value = "Reclamo al contenido del documento."
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "RFP"
-                                .Item(1, j).Value = "Reclamo por falta parcial de mercaderías."
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "RFT"
-                                .Item(1, j).Value = "Reclamo por falta total de mercaderías."
-                                bandera2 = True
-                                Label24.Text = Label24.Text + 1
-                            Case "SIN ACUSE"
-                                .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo."
-                                bandera2 = False
-                            Case ("ACD")
-                                .Item(1, j).Value = "Acepta contenido del documento."
-                                bandera2 = False
-                            Case "ERM"
-                                .Item(1, j).Value = "Otorga recibo de mercaderías o servicios."
-                                bandera2 = False
-                            Case "NCA"
-                                .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento."
-                                bandera2 = False
-                            Case "ENC"
-                                .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento."
-                                bandera2 = True
-                            Case Else
-                                .Item(1, j).Value = "Error de Servicio."
-                                bandera2 = True
-
-                        End Select
-
-                        If bandera2 = True Then
-                            Call notengodatos2()  'antes notengodatos2
-                        End If
-                    End If
-
-                    .Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter 'Alineado a la derecha
-                    .Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft 'alineado a la izquierda
-
-                    .Font = New Font(.Font, FontStyle.Regular)
-                    .DefaultCellStyle.Font = New Font("Calibri", 9)
-
-                    j = j + 1
-                    agrega = 0
-                    .ClearSelection()
-                    .CurrentCell = .Rows(.RowCount - 2).Cells(0)
-                    .SelectionMode = DataGridViewSelectionMode.FullRowSelect
-                    midte = midte + 1
-
-                    contador = Val(contador + 1)
-                    contador = contador.ToString
-                    grilla.Refresh()
-                    Label15.Text = contador
-                    'pone el foco a la ultima fila
-                    grilla.Rows(grilla.RowCount - 1).Selected = True
-
-                    'pone el numero en la columna inicial
-                    If grilla.Rows.Count > 0 Then
-                        For r As Integer = 0 To grilla.Rows.Count - 1
-                            Me.grilla.Rows(r).HeaderCell.Value = (r + 1).ToString()
-                            .RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft
-                            .RowHeadersWidth = 30
-                            grilla.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders)
-                        Next
-                    End If
-
-                End With
+            If conn.State = ConnectionState.Open Then conn.Close()
+            conn.Open()
+            If midte <= "99999" Then
+                valor = "FEL00000" & midte
+            Else
+                valor = "FEL0000" & midte
             End If
-        End If
+            sql = "Select rutcon, totalcon, fechacon FROM VENTA WHERE tipocon = '" & valor & "'"
 
-        'Catch ex As Exception
-        'MsgBox(ex.Message.ToString, MsgBoxStyle.Critical)
-        'Finally
-        'Cursor = Cursors.Default
-        'End Try
+            com = New MySqlCommand(sql, conn)
+            rs = com.ExecuteReader()
+            If rs.HasRows = False Then
+                Call notengodatos2()
+            Else
+
+                If rs.Read() = True Then
+                    TextBox12.Text = "33"
+                    cadena = LTrim(RTrim(CStr(rs("rutcon"))))
+
+                    a = cadena.Substring(1, 9) 'saca el primer caracter
+                    s = cadena.Substring(9, 1) 'saca el ultimo caracter
+                    a = cadena.Substring(1, 8)
+                    TextBox8.Text = a
+                    TextBox7.Text = s
+
+                    'TextBox1.Text = a
+                    TextBox11.Text = CStr(rs("totalcon"))
+                    TextBox10.Text = CStr(rs("fechacon"))
+
+                    TextBox10.Text = Replace(TextBox10.Text, "-", "")
+                    TextBox10.Text = TextBox10.Text
+
+                    rs.Close()
+                    'MsgBox(midte)
+                    frm_menu.Hide()
+                    System.Windows.Forms.Application.DoEvents()
+                    Cursor.Current = Cursors.WaitCursor
+
+                    '///////////////////////////////////////////
+                    'INCREMENTA EL LISTADO
+                    With grilla
+                        If j = 0 Then
+                            .Item(0, j).Value = midte
+                            If b = "DTE No Recibido" Then
+                                .Item(1, j).Value = b
+                                agrega = 1
+                            Else
+                                .Item(1, j).Value = b
+                            End If
+                            ' .Item(2, j).Value = "REGISTRADO"
+                            If agrega = 1 Then
+                                'agrega a la grilla2
+                                Call notengodatos2()   'antes notengodatos2
+                            End If
+
+                            bandera = False
+
+                            Call valida_aceptacion2()
+                            Select Case valret
+                                Case "RCD"
+                                    .Item(1, j).Value = "Reclamo al contenido del documento"
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "RFP"
+                                    .Item(1, j).Value = "Reclamo por falta parcial de mercaderías"
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "RFT"
+                                    .Item(1, j).Value = "Reclamo por falta total de mercaderías"
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "SIN ACUSE"
+                                    .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo"
+                                    bandera2 = False
+                                Case ("ACD")
+                                    .Item(1, j).Value = "Acepta contenido del documento"
+                                    bandera2 = False
+                                Case "ERM"
+                                    .Item(1, j).Value = "Otorga recibo de mercaderías o servicios"
+                                    bandera2 = False
+                                Case "NCA"
+                                    .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento"
+                                    bandera2 = False
+                                Case "ENC"
+                                    .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento"
+                                    bandera2 = True
+                                Case "PAG"
+                                    .Item(1, j).Value = "DTE Pagado al Contado."
+                                    bandera2 = False
+                                Case Else
+                                    .Item(1, j).Value = "Error de Servicio"
+                                    bandera2 = True
+                                    'Label24.Text = Label24.Text + 1
+                            End Select
+
+                            If bandera2 = True Then
+                                Call notengodatos2()   'antes notengodatos2
+                            End If
+
+                        Else
+                            .Rows.Add()
+                            .Item(0, j).Value = midte
+                            If b = "DTE No Recibido" Then
+                                .Item(1, j).Value = b
+                                agrega = 1
+                            Else
+                                .Item(1, j).Value = b
+                            End If
+
+                            ' .Item(2, j).Value = "REGISTRADO" 'si procesa es porque esta en sist vtas
+
+                            If agrega = 1 Then
+                                'agrega a la grilla2
+                                Call notengodatos2() 'antes notengodatos2
+                            End If
+
+                            Call valida_aceptacion()
+                            Select Case valret
+                                Case "RCD"
+                                    .Item(1, j).Value = "Reclamo al contenido del documento."
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "RFP"
+                                    .Item(1, j).Value = "Reclamo por falta parcial de mercaderías."
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "RFT"
+                                    .Item(1, j).Value = "Reclamo por falta total de mercaderías."
+                                    bandera2 = True
+                                    Label24.Text = Label24.Text + 1
+                                Case "SIN ACUSE"
+                                    .Item(1, j).Value = "Documento No Presenta eventos de Reclamos o Acuse de Recibo."
+                                    bandera2 = False
+                                Case ("ACD")
+                                    .Item(1, j).Value = "Acepta contenido del documento."
+                                    bandera2 = False
+                                Case "ERM"
+                                    .Item(1, j).Value = "Otorga recibo de mercaderías o servicios."
+                                    bandera2 = False
+                                Case "NCA"
+                                    .Item(1, j).Value = "recepcion de NC de Anulación que Referencian al Documento."
+                                    bandera2 = False
+                                Case "ENC"
+                                    .Item(1, j).Value = "Recepción de NC distinta de Anulación que Referencian al Documento."
+                                    bandera2 = True
+                                Case "PAG"
+                                    .Item(1, j).Value = "DTE Pagado al Contado."
+                                    bandera2 = False
+
+                                Case Else
+                                    .Item(1, j).Value = "Error de Servicio."
+                                    bandera2 = True
+
+                            End Select
+
+                            If bandera2 = True Then
+                                Call notengodatos2()  'antes notengodatos2
+                            End If
+                        End If
+
+                        .Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter 'Alineado a la derecha
+                        .Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft 'alineado a la izquierda
+
+                        .Font = New Font(.Font, FontStyle.Regular)
+                        .DefaultCellStyle.Font = New Font("Calibri", 9)
+
+                        j = j + 1
+                        agrega = 0
+                        .ClearSelection()
+                        .CurrentCell = .Rows(.RowCount - 2).Cells(0)
+                        .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                        midte = midte + 1
+
+                        contador = Val(contador + 1)
+                        contador = contador.ToString
+                        grilla.Refresh()
+                        Label15.Text = contador
+                        'pone el foco a la ultima fila
+                        grilla.Rows(grilla.RowCount - 1).Selected = True
+
+                        'pone el numero en la columna inicial
+                        If grilla.Rows.Count > 0 Then
+                            For r As Integer = 0 To grilla.Rows.Count - 1
+                                Me.grilla.Rows(r).HeaderCell.Value = (r + 1).ToString()
+                                .RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft
+                                .RowHeadersWidth = 30
+                                grilla.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders)
+                            Next
+                        End If
+
+                    End With
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString, MsgBoxStyle.Critical)
+        Finally
+            Cursor = Cursors.Default
+        End Try
 
         '/////////////////////////////////////////////////////////////////////////
         '//////////////////////// CONSULTA POR FOLIO

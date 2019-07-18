@@ -373,7 +373,7 @@ Partial Class frm_Acuse_Rango_Cint
         Me.Button1.AutoSize = True
         Me.Button1.Font = New System.Drawing.Font("Calibri", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(639, 45)
+        Me.Button1.Location = New System.Drawing.Point(639, 47)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(78, 57)
         Me.Button1.TabIndex = 250
